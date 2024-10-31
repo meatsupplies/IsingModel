@@ -29,7 +29,7 @@ class GlauberDynamics:
         self.grid_copy = np.pad(grid, pad_width= 1)
         self.store_history = store_history
         if store_history == True:
-            self.history == []
+            self.history = []
         pass
     
     def step(self):
@@ -71,10 +71,14 @@ class GlauberDynamics:
         plt.imshow(self.grid_copy, cmap='coolwarm')
         plt.title("Current State")
         plt.show()
-        return "PyPlot"
+        return ""
         
 # Testing Block
-myGrid = np.random.choice((-1,1), size= (4,5))
+myGrid = np.random.choice((-1,1), size= (20,20))
 print(myGrid)
-model = GlauberDynamics(myGrid, temp= 0)
+model = GlauberDynamics(myGrid, temp= 10, store_history= True)
 print(model)
+model.run(10)
+print(model)
+
+# Animation #TODO
